@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
+    @IBOutlet weak var textField: UITextField!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-
+    @IBAction func bottomPressed(_ sender: Any) {
+        
+        let speechUtterance = AVSpeechUtterance(string:textField.text!)
+        speechUtterance.voice = AVSpeechSynthesisVoice(language:"zh-TW")
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(speechUtterance)
 }
-
+}
